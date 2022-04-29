@@ -1,0 +1,5 @@
+package com.myapp.demo.domain;
+
+public class User {
+
+}

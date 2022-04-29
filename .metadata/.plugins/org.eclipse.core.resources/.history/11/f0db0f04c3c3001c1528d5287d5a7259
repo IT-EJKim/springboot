@@ -1,0 +1,5 @@
+package com.myapp.pma.dao;
+
+public class ProjectRepository {
+
+}

@@ -1,0 +1,5 @@
+package com.myapp.demo.web;
+
+public class HomeController {
+
+}

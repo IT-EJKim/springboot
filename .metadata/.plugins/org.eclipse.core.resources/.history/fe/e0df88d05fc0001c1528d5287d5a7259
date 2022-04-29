@@ -1,0 +1,17 @@
+package com.myapp.demo.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HomeController {
+	
+	// 뷰와 컨트롤러 사이의 데이터를 Model을 통해 전달한다
+	@GetMapping("/")
+	public String home(Model model) {
+		return "index"; //index라는 뷰를 찾는다.
+						// resoures의 templates 안에 있음.
+	}
+
+}

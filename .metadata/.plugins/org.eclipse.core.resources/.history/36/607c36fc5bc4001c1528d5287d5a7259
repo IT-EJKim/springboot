@@ -1,0 +1,5 @@
+package com.myapp.pma.entities;
+
+public class Employee {
+
+}

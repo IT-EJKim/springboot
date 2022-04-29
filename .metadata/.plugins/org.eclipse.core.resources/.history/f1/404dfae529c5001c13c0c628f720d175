@@ -1,0 +1,21 @@
+package com.myapp.pma.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HomeController {
+
+	@Autowired
+	ProjectController projectController;
+	
+	@GetMapping("/")
+	public String displayHome(Model model) {
+		List<Project> projectList = proje 
+		
+		return "home";
+	}
+}

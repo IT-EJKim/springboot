@@ -1,0 +1,32 @@
+<!-- ! 치면 기본 태그 써짐 -->
+<!-- xmlns:th="http://www.thymeleaf.org" 이걸 넣어줘야함 -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>인덱스 페이지</title>
+  </head>
+  <body>
+    <h1>index page</h1>
+    <form action="/create" method="post" th:object="${user}">
+      <!-- th:field : 컨트롤러의 객체와 맵핑! -->
+      <p>이름 : <input type="text" th:field="*{name}" /></p>
+      <!-- *은 user객체의~ 라는 뜻. user의 name, user의 age ... -->
+      <p>나이 : <input type="text" th:field="*{age}" /></p>
+      <p>
+        재직중 :
+        <input type="checkbox" th:field="*{employed}" th:value="true" />
+      </p>
+      <p>성별을 선택</p>
+      <p>
+        남성 : <input type="radio" th:field="*{gender}" th:value="남성" />
+        여성 :
+        <input type="radio" th:field="*{gender}" th:value="여성" />
+      </p>
+      <p><input type="submit" value="서브밋" /></p>
+      <p><input type="reset" value="리셋" /></p>
+    </form>
+  </body>
+</html>
