@@ -25,7 +25,7 @@ public class ProjectController {
 	public String displayProjectList(Model model) {
 		List<Project> projectList = projectRepository.findAll();
 		model.addAttribute("projectList", projectList);
-		return "projects/list-projects";
+		return "projects/projectList";
 	}
 	
 	@GetMapping("/new")

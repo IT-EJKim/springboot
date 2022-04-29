@@ -22,8 +22,8 @@ public class EmployeeController {
 	
 	@GetMapping
 	public String displayProjectList(Model model) {
-		List<Employee> employeeList = employeeRepository.findAll();
-		model.addAttribute("employeeList", employeeList);
+		List<Employee> epmList = employeeRepository.findAll();
+		model.addAttribute("employList", employList);
 		return "employees/list-employees";
 	}
 	

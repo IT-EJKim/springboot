@@ -22,9 +22,9 @@ public class EmployeeController {
 	
 	@GetMapping
 	public String displayProjectList(Model model) {
-		List<Employee> employeeList = employeeRepository.findAll();
-		model.addAttribute("employeeList", employeeList);
-		return "employees/list-employees";
+		List<Employee> epmList = employeeRepository.findAll();
+		model.addAttribute("empList", epmList);
+		return "employees/empList";
 	}
 	
 	@GetMapping("/new")
