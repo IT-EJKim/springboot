@@ -18,6 +18,14 @@
         <div class="row my-2">
           <textarea class="form-control" th:field="*{description}" placeholder="프로젝트 설명"></textarea>
         </div>
+
+        <div class="row my-2" style="width: 30%">
+          <p>직원들을 선택</p>
+          <select class="form-select" th:field="${project.employees}" multiple>
+            <option th:each=" employee : ${employeeList}" th:value="${employee.employeeId}" th:text="${employee.firstName}"></option>
+          </select>
+        </div>
+
         <button class="btn btn-primary" type="submit">새 프로젝트</button>
       </form>
     </div>

@@ -1,9 +1,17 @@
 package com.myapp.pma.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Employee {
@@ -15,6 +23,16 @@ public class Employee {
 	private String firstName;
 	private String lastName;
 	private String email;
+	
+	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST}, fetch = FetchType.LAZY)
+	@JoinColumn(name = "project_id")
+	private Project project;
+	
+	// 다대다 관계에서는 테이블을 만들고 이 테이블에 id를 ㄶ고 다른 테이블의 아이디도 입력
+	// CascadeType.REMOVE CascadeType.PERSIST 제거
+	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+	@JoinTable(name="project_employee", joinColumns = @JoinColumn(name="employee_id"), inverseJoinColumns = @JoinColumn(name="project_id"))
+	private List<Project> projects;
 	
 	// 빈 객체 생성
 	public Employee() {
@@ -59,6 +77,22 @@ public class Employee {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public List<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
 	}
 	
 	

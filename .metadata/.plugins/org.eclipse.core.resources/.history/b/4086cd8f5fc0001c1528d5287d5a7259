@@ -1,9 +1,0 @@
-package com.myapp.demo.domain;
-
-public class User {
-	private String name;
-	private int age;
-	private boolean employed;
-	private String gender;
-	
-}

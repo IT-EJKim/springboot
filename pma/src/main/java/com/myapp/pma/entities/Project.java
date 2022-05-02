@@ -1,9 +1,17 @@
 package com.myapp.pma.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Project {
@@ -14,6 +22,13 @@ public class Project {
 	private String name;	//프로젝트 이름
 	private String stage;	//프로젝트 상태(시작전, 진행중, 완료)
 	private String description;	//설명
+	
+	//CascadeType.REMOVE CascadeType.PERSIST 제거
+	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+	@JoinTable(name="project_employee", joinColumns = @JoinColumn(name="project_id"), inverseJoinColumns = @JoinColumn(name="employee_id"))
+	private List<Employee> employees; //직원 리스트
+	
+	
 	
 	public Project() {
 		// 빈 생성자
@@ -58,6 +73,16 @@ public class Project {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public List<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
+	}
+	
+	
 	
 	
 }
